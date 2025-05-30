@@ -13,6 +13,28 @@ func getResource(_ forResource: String, _ ofType: String) -> String {
 /// https://k2-fsa.github.io/sherpa/ncnn/pretrained_models/index.html
 /// to download pre-trained models
 
+/// csukuangfj/sherpa-ncnn-streaming-zipformer-bilingual-zh-en-2023-02-13 (Chinese + English)
+func getMultilingualModelConfig2023_02_13() -> SherpaNcnnModelConfig {
+  let encoderParam = getResource("encoder_jit_trace-pnnx.ncnn", "param")
+  let encoderBin = getResource("encoder_jit_trace-pnnx.ncnn", "bin")
+  let decoderParam = getResource("decoder_jit_trace-pnnx.ncnn", "param")
+  let decoderBin = getResource("decoder_jit_trace-pnnx.ncnn", "bin")
+  let joinerParam = getResource("joiner_jit_trace-pnnx.ncnn", "param")
+  let joinerBin = getResource("joiner_jit_trace-pnnx.ncnn", "bin")
+  let tokens = getResource("tokens", "txt")
+
+  return sherpaNcnnModelConfig(
+    encoderParam: encoderParam,
+    encoderBin: encoderBin,
+    decoderParam: decoderParam,
+    decoderBin: decoderBin,
+    joinerParam: joinerParam,
+    joinerBin: joinerBin,
+    tokens: tokens,
+    numThreads: 4
+  )
+}
+
 /// csukuangfj/sherpa-ncnn-conv-emformer-transducer-2022-12-06 (Chinese + English)
 func getMultilingualModelConfig2022_12_06() -> SherpaNcnnModelConfig {
   let encoderParam = getResource("encoder_jit_trace-pnnx.ncnn", "param")

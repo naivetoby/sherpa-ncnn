@@ -18,6 +18,13 @@
 		C9D7D149298520A100F25DB7 /* SherpaNcnnUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7D148298520A100F25DB7 /* SherpaNcnnUITestsLaunchTests.swift */; };
 		C9D7D15729853D8C00F25DB7 /* SherpaNcnn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7D15529853D8C00F25DB7 /* SherpaNcnn.swift */; };
 		C9D7D15E298540D500F25DB7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D7D15D298540D500F25DB7 /* Model.swift */; };
+		DACCDAE82DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.bin in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE12DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.bin */; };
+		DACCDAE92DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.param in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE62DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.param */; };
+		DACCDAEA2DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.param in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE22DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.param */; };
+		DACCDAEB2DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.bin in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE32DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.bin */; };
+		DACCDAEC2DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.param in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE42DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.param */; };
+		DACCDAED2DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.bin in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE52DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.bin */; };
+		DACCDAEE2DE8AA5000CD97E2 /* tokens.txt in Resources */ = {isa = PBXBuildFile; fileRef = DACCDAE72DE8AA5000CD97E2 /* tokens.txt */; };
 		DE11931E298770A700BFE75B /* sherpa-ncnn.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE11931C298770A700BFE75B /* sherpa-ncnn.xcframework */; };
 		DE11931F298770A700BFE75B /* sherpa-ncnn.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE11931C298770A700BFE75B /* sherpa-ncnn.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DE119320298770A700BFE75B /* openmp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE11931D298770A700BFE75B /* openmp.xcframework */; };
@@ -73,6 +80,13 @@
 		C9D7D15529853D8C00F25DB7 /* SherpaNcnn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SherpaNcnn.swift; path = "../../../swift-api-examples/SherpaNcnn.swift"; sourceTree = "<group>"; };
 		C9D7D15629853D8C00F25DB7 /* SherpaNcnn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SherpaNcnn-Bridging-Header.h"; path = "../../../swift-api-examples/SherpaNcnn-Bridging-Header.h"; sourceTree = "<group>"; };
 		C9D7D15D298540D500F25DB7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		DACCDAE12DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "decoder_jit_trace-pnnx.ncnn.bin"; sourceTree = "<group>"; };
+		DACCDAE22DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.param */ = {isa = PBXFileReference; lastKnownFileType = text; path = "decoder_jit_trace-pnnx.ncnn.param"; sourceTree = "<group>"; };
+		DACCDAE32DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "encoder_jit_trace-pnnx.ncnn.bin"; sourceTree = "<group>"; };
+		DACCDAE42DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.param */ = {isa = PBXFileReference; lastKnownFileType = text; path = "encoder_jit_trace-pnnx.ncnn.param"; sourceTree = "<group>"; };
+		DACCDAE52DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = "joiner_jit_trace-pnnx.ncnn.bin"; sourceTree = "<group>"; };
+		DACCDAE62DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.param */ = {isa = PBXFileReference; lastKnownFileType = text; path = "joiner_jit_trace-pnnx.ncnn.param"; sourceTree = "<group>"; };
+		DACCDAE72DE8AA5000CD97E2 /* tokens.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = tokens.txt; sourceTree = "<group>"; };
 		DE11931C298770A700BFE75B /* sherpa-ncnn.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "sherpa-ncnn.xcframework"; path = "../../build-ios/sherpa-ncnn.xcframework"; sourceTree = "<group>"; };
 		DE11931D298770A700BFE75B /* openmp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = openmp.xcframework; path = "../../build-ios/openmp.xcframework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +121,13 @@
 		C9D7D1192985209F00F25DB7 = {
 			isa = PBXGroup;
 			children = (
+				DACCDAE12DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.bin */,
+				DACCDAE22DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.param */,
+				DACCDAE32DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.bin */,
+				DACCDAE42DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.param */,
+				DACCDAE52DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.bin */,
+				DACCDAE62DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.param */,
+				DACCDAE72DE8AA5000CD97E2 /* tokens.txt */,
 				C9D7D124298520A000F25DB7 /* SherpaNcnn */,
 				C9D7D13B298520A100F25DB7 /* SherpaNcnnTests */,
 				C9D7D145298520A100F25DB7 /* SherpaNcnnUITests */,
@@ -164,8 +185,6 @@
 			children = (
 				DE11931D298770A700BFE75B /* openmp.xcframework */,
 				DE11931C298770A700BFE75B /* sherpa-ncnn.xcframework */,
-				C9D7D15B29853EB300F25DB7 /* openmp.framework */,
-				C9D7D15929853E9A00F25DB7 /* sherpa-ncnn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,6 +294,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACCDAE82DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.bin in Resources */,
+				DACCDAE92DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.param in Resources */,
+				DACCDAEA2DE8AA5000CD97E2 /* decoder_jit_trace-pnnx.ncnn.param in Resources */,
+				DACCDAEB2DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.bin in Resources */,
+				DACCDAEC2DE8AA5000CD97E2 /* encoder_jit_trace-pnnx.ncnn.param in Resources */,
+				DACCDAED2DE8AA5000CD97E2 /* joiner_jit_trace-pnnx.ncnn.bin in Resources */,
+				DACCDAEE2DE8AA5000CD97E2 /* tokens.txt in Resources */,
 				C9D7D132298520A100F25DB7 /* LaunchScreen.storyboard in Resources */,
 				C9D7D12F298520A100F25DB7 /* Assets.xcassets in Resources */,
 				C9D7D12D298520A000F25DB7 /* Main.storyboard in Resources */,
@@ -484,7 +510,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 76FR5BDSB4;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../build-ios/";
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../../build-ios/sherpa-ncnn.xcframework/Headers/";
@@ -519,7 +545,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 76FR5BDSB4;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../build-ios/";
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/../../build-ios/sherpa-ncnn.xcframework/Headers/";

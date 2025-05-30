@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     // If there is a GPU and useGPU is true, we will use GPU
     // If there is no GPU and useGPU is true, we won't use GPU
-    private val useGPU: Boolean = true
+    private val useGPU: Boolean = false
 
     private lateinit var model: SherpaNcnn
     private var audioRecord: AudioRecord? = null
@@ -34,10 +34,7 @@ class MainActivity : AppCompatActivity() {
     private val sampleRateInHz = 16000
     private val channelConfig = AudioFormat.CHANNEL_IN_MONO
 
-    // Note: We don't use AudioFormat.ENCODING_PCM_FLOAT
-    // since the AudioRecord.read(float[]) needs API level >= 23
-    // but we are targeting API level >= 21
-    private val audioFormat = AudioFormat.ENCODING_PCM_16BIT
+    private val audioFormat = AudioFormat.ENCODING_PCM_FLOAT
     private var idx: Int = 0
     private var lastText: String = ""
 
@@ -45,9 +42,7 @@ class MainActivity : AppCompatActivity() {
     private var isRecording: Boolean = false
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         val permissionToRecordAccepted = if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION) {
@@ -117,20 +112,26 @@ class MainActivity : AppCompatActivity() {
 
         val interval = 0.1 // i.e., 100 ms
         val bufferSize = (interval * sampleRateInHz).toInt() // in samples
-        val buffer = ShortArray(bufferSize)
+        val buffer = FloatArray(bufferSize)
 
         while (isRecording) {
-            val ret = audioRecord?.read(buffer, 0, buffer.size)
+            Log.i(TAG, "isRecording: $isRecording")
+            val ret = audioRecord?.read(buffer, 0, buffer.size, AudioRecord.READ_BLOCKING)
+            Log.i(TAG, "ret: $ret")
             if (ret != null && ret > 0) {
-                val samples = FloatArray(ret) { buffer[it] / 32768.0f }
-                model.acceptSamples(samples)
+
+//                val samples = FloatArray(ret) { buffer[it] / 32768.0f }
+//                model.acceptSamples(samples)
+
+
+                model.acceptSamples(buffer)
+
                 while (model.isReady()) {
                     model.decode()
                 }
                 val isEndpoint = model.isEndpoint()
                 val text = model.text
                 var textToDisplay = lastText
-
                 if (text.isNotBlank()) {
                     if (lastText.isBlank()) {
                         textToDisplay = "${idx}: ${text}"
@@ -149,6 +150,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 runOnUiThread {
+                    Log.i(TAG, "textToDisplay: $textToDisplay")
                     textView.text = textToDisplay
                 }
             }
@@ -157,8 +159,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMicrophone(): Boolean {
         if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.RECORD_AUDIO
+                this, Manifest.permission.RECORD_AUDIO
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION)
@@ -167,8 +168,7 @@ class MainActivity : AppCompatActivity() {
 
         val numBytes = AudioRecord.getMinBufferSize(sampleRateInHz, channelConfig, audioFormat)
         Log.i(
-            TAG,
-            "buffer size in milliseconds: ${numBytes * 1000.0f / sampleRateInHz}"
+            TAG, "buffer size in milliseconds: ${numBytes * 1000.0f / (2 * sampleRateInHz)}"
         )
 
         audioRecord = AudioRecord(
@@ -176,18 +176,23 @@ class MainActivity : AppCompatActivity() {
             sampleRateInHz,
             channelConfig,
             audioFormat,
-            numBytes * 2 // a sample has two bytes as we are using 16-bit PCM
+            numBytes * 4 // a sample has two bytes as we are using 16-bit PCM
         )
+
+        // 权限检查
+        if (audioRecord?.state != AudioRecord.STATE_INITIALIZED) {
+            Log.e(TAG, "AudioRecord init failed")
+            return false
+        }
         return true
     }
 
     private fun initModel() {
         val featConfig = getFeatureExtractorConfig(
-            sampleRate = 16000.0f,
-            featureDim = 80
+            sampleRate = 16000.0f, featureDim = 80
         )
         //Please change the argument "type" if you use a different model
-        val modelConfig = getModelConfig(type = 1, useGPU = useGPU)!!
+        val modelConfig = getModelConfig(type = 2, useGPU = useGPU)!!
         val decoderConfig = getDecoderConfig(method = "greedy_search", numActivePaths = 4)
 
         val config = RecognizerConfig(

@@ -89,7 +89,8 @@ class ViewController: UIViewController {
             sampleRate: 16000,
             featureDim: 80)
 
-        let modelConfig = getMultilingualModelConfig2022_12_06()
+        let modelConfig = getMultilingualModelConfig2023_02_13()
+        // let modelConfig = getMultilingualModelConfig2022_12_06()
         // let modelConfig = getMultilingualModelConfig2022_12_06_Int8()
         // let modelConfig = getConvEmformerSmallEnglishModelConfig2023_01_09()
         // let modelConfig = getConvEmformerSmallEnglishModelConfig2023_01_09_Int8()
